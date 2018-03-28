@@ -19,7 +19,7 @@ public class TeacherPresenter {
 
     public TeacherPresenter(ITeacherView mView) {
         this.mView = mView;
-        mInteractor = new TeacherInteractorImpl(new TeachersListener(),new TeachersListener());
+        mInteractor = new TeacherInteractorImpl(new TeacherListener(),new TeachersListener());
     }
 
     public void getTeacher(String id){
@@ -34,7 +34,7 @@ public class TeacherPresenter {
 
         @Override
         public void onSuccess(int event_tag, TeacherBean data) {
-
+            mView.setTeacher(data);
         }
 
         @Override
@@ -57,7 +57,7 @@ public class TeacherPresenter {
         @Override
         public void onSuccess(int event_tag, List<TeacherBean> data) {
             mView.setTeachers(data);
-            mView.setTeacher(data.get(0));
+//            mView.setTeacher(data.get(0));
             CommonUtils.makeEventToast(MyApplication.getContext(),data.get(0).toString(),false);
         }
 

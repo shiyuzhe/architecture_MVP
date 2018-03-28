@@ -67,6 +67,7 @@ public class Act_Teacher extends BaseActivity implements ITeacherView {
     protected void onResume() {
         super.onResume();
         if (teacherBean == null) {
+            presenter.getTeacher(715182173+"");
             presenter.getTeachers(1, 9);
         } else {
             setDate();
